@@ -1,0 +1,2799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>You're Invited — Lourdes Cristina's 60th Birthday</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --cream:#FFFBF0;
+  --cream-2:#FFF6E0;
+  --sun:#FFC93C;
+  --sun-soft:#FFDD82;
+  --mustard:#C9891A;
+  --coffee:#3D2B1F;
+  --coffee-soft:#6B5240;
+  --peach:#FFE0B5;
+  --leaf:#7C8F4A;
+  --leaf-soft:#A9BB78;
+  --white:#FFFDF7;
+  --shadow:rgba(61,43,31,0.16);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--coffee);
+  font-family:'Quicksand',sans-serif;
+  font-weight:500;
+  overflow-x:hidden;
+}
+
+body.locked{
+  overflow:hidden;
+  height:100%;
+}
+
+.grain{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  pointer-events:none;
+  opacity:0.05;
+  mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1,
+h2,
+h3,
+.display{
+  font-family:'Fraunces',serif;
+  font-weight:600;
+  margin:0;
+  letter-spacing:-0.01em;
+}
+
+a{
+  color:inherit;
+}
+
+img{
+  max-width:100%;
+  display:block;
+}
+
+.wrap{
+  max-width:720px;
+  margin:0 auto;
+  padding:0 28px;
+}
+
+/* ---------- SCROLL REVEAL ---------- */
+
+.reveal{
+  opacity:0;
+  transform:translateY(22px) scale(.98);
+  transition:
+    opacity .85s cubic-bezier(.2,.7,.2,1),
+    transform .85s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.in{
+  opacity:1;
+  transform:none;
+}
+
+.ticket.reveal:nth-child(1){
+  transition-delay:0s;
+}
+
+.ticket.reveal:nth-child(2){
+  transition-delay:.12s;
+}
+
+.ticket.reveal:nth-child(3){
+  transition-delay:.24s;
+}
+
+.scrapbook.reveal{
+  opacity:1 !important;
+  transform:none !important;
+}
+
+/* ---------- ENVELOPE INTRO ---------- */
+
+.envelope-screen{
+  position:fixed;
+  inset:0;
+  z-index:200;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      var(--sun-soft) 0%,
+      var(--sun) 55%,
+      #F0AC17 100%
+    );
+  transition:opacity .7s ease,visibility .7s ease;
+}
+
+.envelope-screen.hidden{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+.envelope{
+  position:relative;
+  width:min(340px,74vw);
+  aspect-ratio:3 / 2;
+  perspective:1200px;
+  animation:envBreathe 3.2s ease-in-out infinite;
+  transform-origin:center;
+}
+
+.envelope.open{
+  animation:none;
+}
+
+@keyframes envBreathe{
+  0%,100%{
+    transform:scale(1) rotate(0deg);
+  }
+
+  50%{
+    transform:scale(1.035) rotate(-.6deg);
+  }
+}
+
+.env-shadow{
+  position:absolute;
+  left:50%;
+  bottom:-26px;
+  transform:translateX(-50%);
+  width:78%;
+  height:22px;
+  border-radius:50%;
+  background:rgba(61,43,31,.28);
+  filter:blur(6px);
+  animation:shadowBreathe 3.2s ease-in-out infinite;
+  z-index:0;
+}
+
+@keyframes shadowBreathe{
+  0%,100%{
+    transform:translateX(-50%) scale(1);
+    opacity:.5;
+  }
+
+  50%{
+    transform:translateX(-50%) scale(.9);
+    opacity:.35;
+  }
+}
+
+.envelope-click{
+  position:absolute;
+  inset:-14%;
+  z-index:10;
+  cursor:pointer;
+  background:none;
+  border:none;
+  padding:0;
+}
+
+.env-letter{
+  position:absolute;
+  left:50%;
+  bottom:8%;
+  width:80%;
+  height:76%;
+  background:var(--white);
+  border-radius:6px;
+  box-shadow:0 10px 22px rgba(61,43,31,.22);
+  transform:translate(-50%,6%);
+  transition:
+    transform 1s cubic-bezier(.34,1.1,.4,1) .15s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:16px;
+  z-index:1;
+}
+
+.env-letter p{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:.98rem;
+  color:var(--coffee-soft);
+  line-height:1.5;
+  margin:0;
+}
+
+.env-letter .num{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  color:var(--mustard);
+  font-size:2.4rem;
+  display:block;
+  margin-bottom:4px;
+}
+
+.env-pocket{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:var(--cream-2);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:0 16px 34px rgba(61,43,31,.25);
+}
+
+.env-pocket::before,
+.env-pocket::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  width:0;
+  height:0;
+  border-style:solid;
+}
+
+.env-pocket::before{
+  left:0;
+  border-width:0 0 65% 50%;
+  border-color:transparent transparent var(--peach) transparent;
+}
+
+.env-pocket::after{
+  right:0;
+  border-width:65% 50% 0 0;
+  border-color:transparent transparent transparent var(--peach);
+}
+
+.env-flap{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:56%;
+  background:var(--sun);
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center;
+  transform:rotateX(0deg);
+  transition:transform .9s cubic-bezier(.4,0,.2,1);
+  z-index:3;
+  backface-visibility:hidden;
+}
+
+.env-to{
+  position:absolute;
+  left:9%;
+  bottom:14%;
+  z-index:2;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:.82rem;
+  color:rgba(61,43,31,.6);
+  transition:opacity .4s ease;
+}
+
+.env-to span{
+  display:block;
+  font-size:.68rem;
+  letter-spacing:.04em;
+  opacity:.7;
+  margin-bottom:1px;
+  font-style:normal;
+  font-weight:700;
+}
+
+.env-stamp{
+  position:absolute;
+  bottom:11%;
+  right:8%;
+  width:clamp(30px,12%,42px);
+  aspect-ratio:4/5;
+  z-index:2;
+  background:
+    repeating-linear-gradient(
+      135deg,
+      var(--peach),
+      var(--peach) 6px,
+      var(--sun-soft) 6px,
+      var(--sun-soft) 12px
+    );
+  border:2px dashed rgba(61,43,31,.4);
+  border-radius:2px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform:rotate(4deg);
+  transition:opacity .4s ease;
+}
+
+.env-stamp svg{
+  width:60%;
+  height:60%;
+  opacity:.75;
+}
+
+.env-postmark{
+  position:absolute;
+  bottom:12%;
+  right:23%;
+  width:clamp(24px,10%,34px);
+  aspect-ratio:1/1;
+  z-index:2;
+  border-radius:50%;
+  border:1.5px solid rgba(61,43,31,.35);
+  transform:rotate(-12deg);
+  transition:opacity .4s ease;
+}
+
+.env-postmark::before{
+  content:'';
+  position:absolute;
+  inset:3px;
+  border-radius:50%;
+  border:1px dashed rgba(61,43,31,.3);
+}
+
+.envelope.open .env-to,
+.envelope.open .env-stamp,
+.envelope.open .env-postmark{
+  opacity:0;
+}
+
+.env-ribbon{
+  position:absolute;
+  top:20%;
+  left:50%;
+  width:24%;
+  aspect-ratio:78 / 34;
+  transform:translate(-50%,-50%);
+  z-index:4;
+  transition:
+    transform .6s cubic-bezier(.4,0,.2,1) .1s,
+    opacity .5s ease .1s;
+}
+
+.envelope.open .env-ribbon{
+  transform:translate(-50%,-140%) rotate(-18deg);
+  opacity:0;
+}
+
+.env-seal{
+  position:absolute;
+  top:22%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:clamp(40px,15%,52px);
+  aspect-ratio:1/1;
+  z-index:5;
+}
+
+.env-seal-half{
+  position:absolute;
+  inset:0;
+  border-radius:50% 46% 54% 48% / 48% 54% 46% 52%;
+  background:var(--coffee);
+  box-shadow:0 4px 10px rgba(61,43,31,.35);
+  transition:
+    transform .55s cubic-bezier(.4,0,.2,1) .15s,
+    opacity .5s ease .15s;
+}
+
+.env-seal-half.left{
+  clip-path:polygon(0 0,51% 0,51% 100%,0 100%);
+}
+
+.env-seal-half.right{
+  clip-path:polygon(51% 0,100% 0,100% 100%,51% 100%);
+}
+
+.env-seal-label{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--sun);
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:1.05rem;
+  transition:opacity .35s ease;
+}
+
+.env-seal-shine{
+  position:absolute;
+  top:14%;
+  left:20%;
+  width:30%;
+  height:16%;
+  border-radius:50%;
+  background:rgba(255,255,255,.35);
+  animation:sealShine 2.6s ease-in-out infinite;
+}
+
+@keyframes sealShine{
+  0%,100%{
+    opacity:.3;
+  }
+
+  50%{
+    opacity:.75;
+  }
+}
+
+.envelope.open .env-seal-half.left{
+  transform:translate(-9px,-3px) rotate(-30deg);
+  opacity:0;
+}
+
+.envelope.open .env-seal-half.right{
+  transform:translate(9px,-3px) rotate(30deg);
+  opacity:0;
+}
+
+.envelope.open .env-seal-label,
+.envelope.open .env-seal-shine{
+  opacity:0;
+}
+
+.envelope.open .env-flap{
+  transform:rotateX(180deg);
+}
+
+.envelope.open .env-letter{
+  transform:translate(-50%,-62%);
+  z-index:5;
+}
+
+.envelope-hint{
+  font-family:'Quicksand',sans-serif;
+  font-weight:700;
+  color:var(--coffee);
+  font-size:.95rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  opacity:.85;
+  animation:hintBounce 1.8s ease-in-out infinite;
+}
+
+.envelope-hint::before{
+  content:'♡';
+  font-size:1.1rem;
+}
+
+@keyframes hintBounce{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-5px);
+  }
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+  position:relative;
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:90px 24px 60px;
+  background:
+    radial-gradient(
+      circle at 50% 38%,
+      var(--sun-soft) 0%,
+      var(--sun) 46%,
+      #F6B31E 100%
+    );
+  overflow:hidden;
+}
+
+.rays{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:1100px;
+  height:1100px;
+  transform:translate(-50%,-50%);
+  animation:spin 90s linear infinite;
+  opacity:.55;
+  z-index:0;
+}
+
+.rays-wrap{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  transition:transform .2s ease-out;
+  pointer-events:none;
+}
+
+@keyframes spin{
+  to{
+    transform:translate(-50%,-50%) rotate(360deg);
+  }
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  animation:heroFloat 8s ease-in-out infinite;
+}
+
+@keyframes heroFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-4px);
+  }
+}
+
+.portrait{
+  width:132px;
+  height:132px;
+  border-radius:50%;
+  margin:0 auto 22px;
+  position:relative;
+  background:var(--white);
+  padding:6px;
+  box-shadow:0 8px 0 var(--shadow);
+  opacity:0;
+  animation:
+    popIn .8s .05s cubic-bezier(.2,1.2,.4,1) forwards,
+    portraitBreathe 5s 1.2s ease-in-out infinite;
+}
+
+@keyframes portraitBreathe{
+  0%,100%{
+    box-shadow:0 8px 0 var(--shadow);
+  }
+
+  50%{
+    box-shadow:0 10px 14px rgba(61,43,31,.12);
+  }
+}
+
+.portrait-ring{
+  position:absolute;
+  inset:-9px;
+  border-radius:50%;
+  border:2px dashed rgba(61,43,31,.35);
+  animation:spin 40s linear infinite;
+}
+
+.portrait img,
+.portrait-fallback{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+}
+
+.portrait-fallback{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--peach),var(--sun-soft));
+  color:var(--mustard);
+}
+
+.portrait-fallback svg{
+  width:44%;
+  height:44%;
+  opacity:.7;
+}
+
+.drift-dot{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+  z-index:1;
+  animation:drift 12s ease-in-out infinite;
+}
+
+.d1{
+  width:10px;
+  height:10px;
+  top:38%;
+  left:16%;
+}
+
+.d2{
+  width:7px;
+  height:7px;
+  top:55%;
+  right:20%;
+  animation-delay:3s;
+}
+
+.d3{
+  width:12px;
+  height:12px;
+  top:75%;
+  left:30%;
+  animation-delay:6s;
+}
+
+.d4{
+  width:8px;
+  height:8px;
+  top:25%;
+  right:32%;
+  animation-delay:9s;
+}
+
+@keyframes drift{
+  0%{
+    transform:translate(0,0);
+    opacity:.5;
+  }
+
+  50%{
+    transform:translate(14px,-26px);
+    opacity:.9;
+  }
+
+  100%{
+    transform:translate(0,0);
+    opacity:.5;
+  }
+}
+
+.eyebrow-pill{
+  display:inline-block;
+  background:var(--white);
+  color:var(--mustard);
+  padding:8px 22px;
+  border-radius:999px;
+  font-size:.95rem;
+  font-weight:700;
+  box-shadow:0 4px 0 var(--shadow);
+  margin-bottom:28px;
+  opacity:0;
+  animation:
+    dropIn .7s .15s cubic-bezier(.2,1.4,.4,1) forwards,
+    pillPulse 3.5s 1.5s ease-in-out infinite;
+}
+
+@keyframes pillPulse{
+  0%,100%{
+    box-shadow:0 4px 0 var(--shadow);
+  }
+
+  50%{
+    box-shadow:0 5px 12px rgba(61,43,31,.14);
+  }
+}
+
+.big-number{
+  font-size:clamp(7rem,30vw,13rem);
+  line-height:.82;
+  color:var(--white);
+  -webkit-text-stroke:3px var(--coffee);
+  text-shadow:6px 6px 0 var(--coffee);
+  opacity:0;
+  animation:
+    popIn .8s .4s cubic-bezier(.2,1.2,.4,1) forwards,
+    numberGlow 4s 1.5s ease-in-out infinite;
+}
+
+@keyframes numberGlow{
+  0%,100%{
+    filter:drop-shadow(0 0 0 rgba(255,255,255,0));
+  }
+
+  50%{
+    filter:drop-shadow(0 0 10px rgba(255,255,255,.28));
+  }
+}
+
+.hero-name{
+  font-size:clamp(2rem,6vw,3.2rem);
+  margin-top:6px;
+  font-style:italic;
+  font-weight:500;
+  opacity:0;
+  animation:dropIn .7s .75s ease forwards;
+}
+
+.hero-sub{
+  max-width:480px;
+  margin:18px auto 0;
+  font-size:1.08rem;
+  line-height:1.65;
+  color:var(--coffee-soft);
+  opacity:0;
+  animation:dropIn .7s .95s ease forwards;
+}
+
+.date-badge{
+  margin-top:34px;
+  display:inline-flex;
+  gap:14px;
+  align-items:center;
+  background:var(--coffee);
+  color:var(--cream);
+  padding:14px 26px;
+  border-radius:16px;
+  font-family:'Fraunces',serif;
+  font-size:1.15rem;
+  opacity:0;
+  animation:
+    dropIn .7s 1.15s ease forwards,
+    badgeFloat 4s 2s ease-in-out infinite;
+  position:relative;
+  overflow:hidden;
+}
+
+.date-badge::after{
+  content:'';
+  position:absolute;
+  top:0;
+  left:-80%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.18),
+    transparent
+  );
+  transform:skewX(-20deg);
+  animation:badgeShine 5s 2.5s ease-in-out infinite;
+}
+
+@keyframes badgeShine{
+  0%,55%{
+    left:-80%;
+  }
+
+  75%,100%{
+    left:140%;
+  }
+}
+
+@keyframes badgeFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-3px);
+  }
+}
+
+.date-badge .divider{
+  width:1px;
+  height:22px;
+  background:rgba(255,251,240,.35);
+}
+
+@keyframes dropIn{
+  from{
+    opacity:0;
+    transform:translateY(-14px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes popIn{
+  from{
+    opacity:0;
+    transform:scale(.7);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.balloon{
+  position:absolute;
+  width:54px;
+  height:68px;
+  border-radius:50% 50% 50% 50% / 55% 55% 45% 45%;
+  z-index:1;
+  animation:float 7s ease-in-out infinite;
+  box-shadow:inset -8px -8px 14px rgba(0,0,0,.08);
+  transition:margin-left .2s ease-out;
+}
+
+.balloon::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  top:100%;
+  width:1px;
+  height:40px;
+  background:rgba(61,43,31,.35);
+}
+
+.b1{
+  background:var(--white);
+  top:12%;
+  left:8%;
+  animation-delay:0s;
+}
+
+.b2{
+  background:var(--peach);
+  top:20%;
+  right:10%;
+  animation-delay:1.1s;
+  width:44px;
+  height:56px;
+}
+
+.b3{
+  background:var(--leaf-soft);
+  top:65%;
+  left:6%;
+  animation-delay:2s;
+  width:38px;
+  height:48px;
+}
+
+.b4{
+  background:var(--white);
+  top:70%;
+  right:7%;
+  animation-delay:.6s;
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0) rotate(0deg);
+  }
+
+  50%{
+    transform:translateY(-22px) rotate(2deg);
+  }
+}
+
+.scroll-cue{
+  position:absolute;
+  bottom:28px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:.85rem;
+  color:var(--coffee);
+  opacity:.75;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  transition:opacity .5s ease;
+}
+
+.scroll-cue.faded{
+  opacity:0;
+}
+
+.scroll-cue span{
+  width:1px;
+  height:26px;
+  background:var(--coffee);
+  animation:pulseDown 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseDown{
+  0%{
+    opacity:.2;
+    transform:scaleY(.4);
+    transform-origin:top;
+  }
+
+  50%{
+    opacity:1;
+    transform:scaleY(1);
+    transform-origin:top;
+  }
+
+  100%{
+    opacity:.2;
+    transform:scaleY(.4);
+    transform-origin:top;
+  }
+}
+
+/* ---------- BUNTING ---------- */
+
+.bunting{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:2;
+  opacity:.95;
+}
+
+.bunting .flag{
+  transform-origin:top center;
+  animation:flagSway 3.4s ease-in-out infinite;
+}
+
+.bunting .flag:nth-child(odd){
+  animation-delay:.2s;
+}
+
+.bunting .flag:nth-child(3n){
+  animation-delay:.5s;
+}
+
+@keyframes flagSway{
+  0%,100%{
+    transform:rotate(-3deg);
+  }
+
+  50%{
+    transform:rotate(3deg);
+  }
+}
+
+/* ---------- SPARKLES ---------- */
+
+.sparkle{
+  position:absolute;
+  z-index:2;
+  animation:twinkle 2.6s ease-in-out infinite;
+  opacity:0;
+}
+
+.sparkle.s1{
+  top:20%;
+  left:20%;
+  animation-delay:.2s;
+}
+
+.sparkle.s2{
+  top:30%;
+  right:16%;
+  width:20px;
+  animation-delay:1s;
+}
+
+.sparkle.s3{
+  bottom:26%;
+  left:14%;
+  width:16px;
+  animation-delay:1.8s;
+}
+
+@keyframes twinkle{
+  0%,100%{
+    opacity:0;
+    transform:scale(.6) rotate(0deg);
+  }
+
+  50%{
+    opacity:.85;
+    transform:scale(1) rotate(15deg);
+  }
+}
+
+/* ---------- WAVES ---------- */
+
+.wave{
+  display:block;
+  width:100%;
+  line-height:0;
+  position:relative;
+  z-index:2;
+  margin-top:-2px;
+}
+
+.wave svg{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+.wave-into-footer{
+  margin-top:-2px;
+  margin-bottom:-1px;
+}
+
+.hero .wave{
+  position:absolute;
+  bottom:-2px;
+  left:0;
+  z-index:2;
+}
+
+/* ---------- MESSAGE ---------- */
+
+.message{
+  padding:110px 0 90px;
+  position:relative;
+}
+
+.message .wrap{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:30px;
+  align-items:center;
+}
+
+.message-text{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.5rem,3.6vw,2.15rem);
+  line-height:1.42;
+  font-weight:500;
+  font-style:italic;
+  color:var(--coffee);
+  max-width:610px;
+}
+
+.message-sign{
+  margin-top:22px;
+  font-family:'Quicksand',sans-serif;
+  font-style:normal;
+  font-weight:700;
+  font-size:1rem;
+  line-height:1.6;
+  color:var(--mustard);
+  max-width:560px;
+}
+
+.leaf-doodle{
+  width:96px;
+  height:96px;
+  opacity:.9;
+  flex-shrink:0;
+  animation:leafFloat 4s ease-in-out infinite;
+}
+
+@keyframes leafFloat{
+  0%,100%{
+    transform:rotate(0deg) translateY(0);
+  }
+
+  50%{
+    transform:rotate(3deg) translateY(-5px);
+  }
+}
+
+/* ---------- DETAILS ---------- */
+
+.details{
+  padding:40px 0 110px;
+  background:linear-gradient(
+    180deg,
+    var(--cream) 0%,
+    var(--cream-2) 100%
+  );
+}
+
+.details h2{
+  font-size:clamp(1.9rem,4.4vw,2.6rem);
+  text-align:center;
+  margin-bottom:12px;
+}
+
+.details h2::before{
+  content:'✦';
+  display:block;
+  font-family:'Quicksand',sans-serif;
+  font-size:.8rem;
+  color:var(--mustard);
+  margin-bottom:8px;
+}
+
+.details .kicker{
+  text-align:center;
+  color:var(--coffee-soft);
+  margin-bottom:52px;
+  font-size:1.02rem;
+}
+
+.tickets{
+  display:flex;
+  flex-direction:column;
+  gap:30px;
+}
+
+.ticket{
+  background:var(--white);
+  border-radius:20px;
+  display:flex;
+  box-shadow:0 10px 0 var(--shadow);
+  overflow:hidden;
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+.ticket:nth-child(1){
+  transform:rotate(-1.1deg);
+}
+
+.ticket:nth-child(2){
+  transform:rotate(.8deg);
+}
+
+.ticket:nth-child(3){
+  transform:rotate(-.6deg);
+}
+
+.ticket:hover{
+  transform:rotate(0deg) translateY(-5px) !important;
+  box-shadow:0 14px 0 var(--shadow);
+}
+
+.ticket-stub{
+  width:90px;
+  flex-shrink:0;
+  background:var(--sun);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.ticket-stub svg{
+  width:34px;
+  height:34px;
+}
+
+.ticket-stub::after{
+  content:'';
+  position:absolute;
+  right:-1px;
+  top:0;
+  bottom:0;
+  width:0;
+  border-right:3px dashed var(--cream);
+}
+
+.ticket-body{
+  padding:22px 26px;
+  flex:1;
+}
+
+.ticket-label{
+  font-size:.85rem;
+  color:var(--mustard);
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.ticket-value{
+  font-family:'Fraunces',serif;
+  font-size:1.4rem;
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.ticket-note{
+  font-size:.92rem;
+  color:var(--coffee-soft);
+}
+
+.rsvp-note{
+  margin-top:34px;
+  text-align:center;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.05rem;
+  color:var(--coffee-soft);
+}
+
+.placeholder{
+  font-style:italic;
+  color:var(--mustard);
+  border-bottom:2px dashed var(--peach);
+  padding-bottom:1px;
+}
+
+/* ---------- GALLERY ---------- */
+
+.gallery{
+  padding:30px 0 110px;
+}
+
+.gallery h2{
+  font-size:clamp(1.9rem,4.4vw,2.6rem);
+  text-align:center;
+}
+
+.gallery .kicker{
+  text-align:center;
+  color:var(--coffee-soft);
+  margin:10px 0 50px;
+  font-size:1.02rem;
+}
+
+.scrapbook{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:34px 22px;
+}
+
+@media(min-width:560px){
+  .scrapbook{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+.polaroid{
+  --rot:0deg;
+  background:var(--white);
+  padding:10px 10px 26px;
+  border-radius:4px;
+  box-shadow:0 8px 18px rgba(61,43,31,.14);
+  position:relative;
+  opacity:0;
+  transform:rotate(var(--rot)) translateY(26px) scale(.9);
+  transition:
+    opacity .6s cubic-bezier(.2,.7,.2,1),
+    transform .6s cubic-bezier(.2,.7,.2,1),
+    box-shadow .3s ease;
+}
+
+.polaroid:nth-child(1){
+  --rot:-4deg;
+  transition-delay:.05s;
+}
+
+.polaroid:nth-child(2){
+  --rot:3deg;
+  transition-delay:.15s;
+}
+
+.polaroid:nth-child(3){
+  --rot:-2deg;
+  transition-delay:.25s;
+}
+
+.polaroid:nth-child(4){
+  --rot:2deg;
+  transition-delay:.35s;
+}
+
+.polaroid:nth-child(5){
+  --rot:-3deg;
+  transition-delay:.45s;
+}
+
+.polaroid:nth-child(6){
+  --rot:4deg;
+  transition-delay:.55s;
+}
+
+.scrapbook.in .polaroid{
+  opacity:1;
+  transform:rotate(var(--rot)) translateY(0) scale(1);
+}
+
+.polaroid:hover{
+  transform:rotate(0deg) scale(1.05) translateY(-4px) !important;
+  box-shadow:0 14px 22px rgba(61,43,31,.22);
+  z-index:5;
+}
+
+.polaroid-photo{
+  aspect-ratio:1 / 1;
+  border-radius:2px;
+  background:linear-gradient(
+    135deg,
+    var(--peach),
+    var(--sun-soft)
+  );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--mustard);
+  overflow:hidden;
+  position:relative;
+}
+
+.polaroid-photo::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255,255,255,.2) 50%,
+    transparent 75%
+  );
+  transform:translateX(-130%);
+  transition:transform .7s ease;
+}
+
+.polaroid:hover .polaroid-photo::after{
+  transform:translateX(130%);
+}
+
+.polaroid-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.polaroid-fallback{
+  display:none;
+  width:100%;
+  height:100%;
+  align-items:center;
+  justify-content:center;
+}
+
+.polaroid-photo svg{
+  width:34%;
+  height:34%;
+  opacity:.65;
+}
+
+.polaroid-caption{
+  text-align:center;
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:.85rem;
+  margin-top:10px;
+  color:var(--coffee-soft);
+}
+
+.tape{
+  position:absolute;
+  top:-12px;
+  left:50%;
+  transform:translateX(-50%) rotate(-3deg);
+  width:52px;
+  height:20px;
+  background:rgba(255,201,60,.55);
+  border:1px solid rgba(201,137,26,.3);
+  z-index:2;
+  transition:transform .3s ease;
+}
+
+.polaroid:hover .tape{
+  transform:translateX(-50%) rotate(3deg);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+  background:var(--coffee);
+  color:var(--cream);
+  text-align:center;
+  padding:70px 24px 50px;
+  position:relative;
+  overflow:hidden;
+}
+
+footer .display{
+  font-size:clamp(1.6rem,4vw,2.1rem);
+  font-style:italic;
+  font-weight:500;
+  position:relative;
+  z-index:2;
+}
+
+footer p{
+  margin-top:14px;
+  color:rgba(255,251,240,.7);
+  font-size:.95rem;
+  position:relative;
+  z-index:2;
+}
+
+footer .signature{
+  margin-top:24px;
+  color:var(--sun-soft);
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.1rem;
+}
+
+.sunset{
+  position:absolute;
+  bottom:-70px;
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  height:260px;
+  background:
+    radial-gradient(
+      circle,
+      var(--sun) 0%,
+      rgba(255,201,60,0) 70%
+    );
+  opacity:.5;
+}
+
+/* ---------- CONFETTI ---------- */
+
+.confetti-piece{
+  position:fixed;
+  top:-10px;
+  width:9px;
+  height:14px;
+  z-index:50;
+  pointer-events:none;
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(105vh) rotate(540deg);
+    opacity:.9;
+  }
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:620px){
+
+  .message{
+    padding:80px 0 70px;
+  }
+
+  .message .wrap{
+    grid-template-columns:1fr;
+  }
+
+  .leaf-doodle{
+    display:none;
+  }
+
+  .message-text{
+    font-size:1.5rem;
+  }
+
+  .ticket-body{
+    padding:20px;
+  }
+
+  .hero-sub{
+    font-size:1rem;
+  }
+
+}
+
+@media(max-width:420px){
+
+  .wrap{
+    padding:0 20px;
+  }
+
+  .envelope{
+    width:84vw;
+  }
+
+  .env-letter p{
+    font-size:.86rem;
+  }
+
+  .env-letter .num{
+    font-size:2rem;
+  }
+
+  .env-to{
+    font-size:.72rem;
+    left:7%;
+    bottom:12%;
+  }
+
+  .env-to span{
+    font-size:.6rem;
+  }
+
+  .env-seal{
+    width:clamp(36px,14%,44px);
+  }
+
+  .env-seal-label{
+    font-size:.92rem;
+  }
+
+  .portrait{
+    width:104px;
+    height:104px;
+  }
+
+  .ticket-stub{
+    width:64px;
+  }
+
+  .ticket-stub svg{
+    width:26px;
+    height:26px;
+  }
+
+  .ticket-body{
+    padding:16px;
+  }
+
+  .ticket-value{
+    font-size:1.18rem;
+  }
+
+  .ticket-note{
+    font-size:.82rem;
+  }
+
+  .scrapbook{
+    gap:26px 14px;
+  }
+
+  .big-number{
+    -webkit-text-stroke:2px var(--coffee);
+    text-shadow:4px 4px 0 var(--coffee);
+  }
+
+  .date-badge{
+    padding:12px 18px;
+    font-size:1rem;
+    gap:10px;
+  }
+
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+
+  .hero-inner{
+    animation:none !important;
+  }
+
+  .portrait{
+    animation:none !important;
+  }
+
+  .big-number,
+  .eyebrow-pill,
+  .date-badge{
+    animation-duration:.01ms !important;
+  }
+
+}
+
+</style>
+</head>
+
+<body class="locked">
+
+<div class="grain"></div>
+
+<!-- ================= ENVELOPE INTRO ================= -->
+
+<div class="envelope-screen" id="envelopeScreen">
+
+  <div class="envelope" id="envelope">
+
+    <div class="env-shadow"></div>
+
+    <button
+      class="envelope-click"
+      id="envelopeBtn"
+      aria-label="Open the invitation">
+    </button>
+
+    <div class="env-letter">
+      <p>
+        <span class="num">60</span>
+        You're invited<br>
+        to celebrate my 60th birthday
+      </p>
+    </div>
+
+    <div class="env-pocket"></div>
+
+    <div class="env-to">
+      <span>To</span>
+      Our Family &amp; Friends
+    </div>
+
+    <div class="env-stamp">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#3D2B1F"
+        stroke-width="1.4">
+        <circle cx="12" cy="12" r="8"/>
+        <path d="M12 7v5l3 3"/>
+      </svg>
+    </div>
+
+    <div class="env-postmark"></div>
+
+    <div class="env-flap"></div>
+
+    <svg
+      class="env-ribbon"
+      viewBox="0 0 78 34"
+      fill="none">
+
+      <path
+        d="M39 17 C20 2,4 6,8 17 C4 28,20 32,39 17 Z"
+        fill="#F4845F"
+        opacity=".9"/>
+
+      <path
+        d="M39 17 C58 2,74 6,70 17 C74 28,58 32,39 17 Z"
+        fill="#F4845F"
+        opacity=".9"/>
+
+      <circle
+        cx="39"
+        cy="17"
+        r="6"
+        fill="#C9891A"/>
+
+    </svg>
+
+    <div class="env-seal">
+
+      <div class="env-seal-half left"></div>
+      <div class="env-seal-half right"></div>
+      <div class="env-seal-shine"></div>
+
+      <div class="env-seal-label">
+        60
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="envelope-hint">
+    tap the envelope to open
+  </div>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+  <div class="rays-wrap" id="raysWrap">
+
+    <svg
+      class="rays"
+      viewBox="0 0 400 400"
+      aria-hidden="true">
+
+      <g fill="rgba(255,255,255,0.35)">
+        <g id="raygroup"></g>
+      </g>
+
+    </svg>
+
+  </div>
+
+
+  <svg
+    class="bunting"
+    viewBox="0 0 700 60"
+    preserveAspectRatio="none"
+    aria-hidden="true">
+
+    <path
+      d="M0 4 Q350 40 700 4"
+      fill="none"
+      stroke="rgba(61,43,31,0.35)"
+      stroke-width="2"/>
+
+    <g>
+
+      <polygon
+        class="flag"
+        points="40,10 70,10 55,45"
+        fill="#FFFDF7"/>
+
+      <polygon
+        class="flag"
+        points="110,14 140,14 125,49"
+        fill="#FFE0B5"/>
+
+      <polygon
+        class="flag"
+        points="180,10 210,10 195,45"
+        fill="#A9BB78"/>
+
+      <polygon
+        class="flag"
+        points="250,14 280,14 265,49"
+        fill="#FFFDF7"/>
+
+      <polygon
+        class="flag"
+        points="320,10 350,10 335,45"
+        fill="#FFE0B5"/>
+
+      <polygon
+        class="flag"
+        points="390,14 420,14 405,49"
+        fill="#A9BB78"/>
+
+      <polygon
+        class="flag"
+        points="460,10 490,10 475,45"
+        fill="#FFFDF7"/>
+
+      <polygon
+        class="flag"
+        points="530,14 560,14 545,49"
+        fill="#FFE0B5"/>
+
+      <polygon
+        class="flag"
+        points="600,10 630,10 615,45"
+        fill="#A9BB78"/>
+
+      <polygon
+        class="flag"
+        points="650,14 680,14 665,49"
+        fill="#FFFDF7"/>
+
+    </g>
+
+  </svg>
+
+
+  <!-- Sparkles -->
+
+  <svg
+    class="sparkle s1"
+    viewBox="0 0 24 24"
+    fill="var(--white)"
+    width="24">
+
+    <path d="M12 0l2 10 10 2-10 2-2 10-2-10-10-2 10-2z"/>
+
+  </svg>
+
+  <svg
+    class="sparkle s2"
+    viewBox="0 0 24 24"
+    fill="var(--white)">
+
+    <path d="M12 0l2 10 10 2-10 2-2 10-2-10-10-2 10-2z"/>
+
+  </svg>
+
+  <svg
+    class="sparkle s3"
+    viewBox="0 0 24 24"
+    fill="var(--white)">
+
+    <path d="M12 0l2 10 10 2-10 2-2 10-2-10-10-2 10-2z"/>
+
+  </svg>
+
+
+  <!-- Balloons -->
+
+  <div class="balloon b1"></div>
+  <div class="balloon b2"></div>
+  <div class="balloon b3"></div>
+  <div class="balloon b4"></div>
+
+
+  <!-- Decorative dots -->
+
+  <div class="drift-dot d1"></div>
+  <div class="drift-dot d2"></div>
+  <div class="drift-dot d3"></div>
+  <div class="drift-dot d4"></div>
+
+
+  <!-- HERO CONTENT -->
+
+  <div class="hero-inner">
+
+    <div class="portrait">
+
+      <div class="portrait-ring"></div>
+
+      <img
+        src="pictures/lola1.jpg"
+        alt="Lourdes Cristina"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+      <div class="portrait-fallback">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5">
+
+          <circle
+            cx="12"
+            cy="8"
+            r="4"/>
+
+          <path
+            d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+
+        </svg>
+
+      </div>
+
+    </div>
+
+
+    <span class="eyebrow-pill">
+      you're invited
+    </span>
+
+
+    <div class="big-number display">
+      60
+    </div>
+
+
+    <h1 class="hero-name">
+      Lourdes Cristina
+    </h1>
+
+
+    <p class="hero-sub">
+      Please join me as I celebrate my 60th birthday with love, laughter, good food and wonderful memories.
+    </p>
+
+
+    <div class="date-badge">
+
+      <span>
+        September 19, 2026
+      </span>
+
+      <span class="divider"></span>
+
+      <span>
+        3:00 PM
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="scroll-cue" id="scrollCue">
+
+    <span></span>
+    scroll down
+
+  </div>
+
+
+  <div class="wave">
+
+    <svg
+      viewBox="0 0 1440 90"
+      preserveAspectRatio="none">
+
+      <path
+        d="M0 40 C 240 90, 480 0, 720 40 C 960 80, 1200 10, 1440 40 L1440 90 L0 90 Z"
+        fill="#FFFBF0"/>
+
+    </svg>
+
+  </div>
+
+</section>
+
+
+<!-- ================= INVITATION ================= -->
+
+<section class="message">
+
+  <div class="wrap reveal">
+
+    <div>
+
+      <p class="message-text">
+        I would love to celebrate this wonderful milestone as I turn 60, reflecting on the beautiful memories, meaningful moments, and blessings that have filled my years. 
+        I look forward to sharing this special occasion with you.</p>
+
+      <p class="message-sign">
+      Your presence would make my birthday celebration even more special.
+      </p>
+
+    </div>
+
+
+    <svg
+      class="leaf-doodle"
+      viewBox="0 0 100 100"
+      fill="none">
+
+      <path
+        d="M50 90C50 90 20 70 20 40C20 20 35 10 50 10C65 10 80 20 80 40C80 70 50 90 50 90Z"
+        stroke="#7C8F4A"
+        stroke-width="3"/>
+
+      <path
+        d="M50 90V10"
+        stroke="#7C8F4A"
+        stroke-width="2"/>
+
+    </svg>
+
+  </div>
+
+</section>
+
+
+<!-- ================= DETAILS ================= -->
+
+<section class="details">
+
+  <div class="wrap">
+
+    <h2 class="reveal">
+      The details
+    </h2>
+
+    <p class="kicker reveal">
+      Save the date and celebrate this special milestone with me
+    </p>
+
+
+    <div class="tickets">
+
+
+      <!-- DATE -->
+
+      <div class="ticket reveal">
+
+        <div class="ticket-stub">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#3D2B1F"
+            stroke-width="1.6">
+
+            <rect
+              x="3"
+              y="4"
+              width="18"
+              height="17"
+              rx="2"/>
+
+            <path
+              d="M3 9h18M8 2v4M16 2v4"/>
+
+          </svg>
+
+        </div>
+
+
+        <div class="ticket-body">
+
+          <div class="ticket-label">
+            Date
+          </div>
+
+          <div class="ticket-value">
+            September 19, 2026
+          </div>
+
+          <div class="ticket-note">
+            I can't wait to celebrate this special day with you.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- TIME -->
+
+      <div class="ticket reveal">
+
+        <div class="ticket-stub">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#3D2B1F"
+            stroke-width="1.6">
+
+            <circle
+              cx="12"
+              cy="12"
+              r="9"/>
+
+            <path
+              d="M12 7v5l3 3"/>
+
+          </svg>
+
+        </div>
+
+
+        <div class="ticket-body">
+
+          <div class="ticket-label">
+            Time
+          </div>
+
+          <div class="ticket-value">
+            3:00 PM onwards
+          </div>
+
+          <div class="ticket-note">
+            An afternoon of celebration, laughter, good food, and fellowship.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- VENUE -->
+
+      <div class="ticket reveal">
+
+        <div class="ticket-stub">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#3D2B1F"
+            stroke-width="1.6">
+
+            <path
+              d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/>
+
+            <circle
+              cx="12"
+              cy="9"
+              r="2.5"/>
+
+          </svg>
+
+        </div>
+
+
+        <div class="ticket-body">
+
+          <div class="ticket-label">
+            Venue
+          </div>
+
+          <div class="ticket-value">
+            <span class="placeholder">
+              Harmony Staycation
+            </span>,
+            Daet, Camarines Norte
+          </div>
+
+          <div class="ticket-note">
+            <span class="placeholder">
+             Harmony 2 Village, Brgy. Mancruz
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <p class="rsvp-note reveal">
+      I would be delighted to have you celebrate this special day with me.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= GALLERY ================= -->
+
+<section class="gallery">
+
+  <div class="wrap">
+
+    <h2 class="reveal">
+      Memories to Treasure
+    </h2>
+
+    <p class="kicker reveal">
+      A few special moments from the years that made me who I am today.
+    </p>
+
+
+    <div class="scrapbook reveal">
+
+
+      <!-- PHOTO 1 -->
+
+      <div class="polaroid">
+
+        <div class="tape"></div>
+
+        <div class="polaroid-photo">
+
+          <img
+            src="pictures/photo-1.jpg"
+            alt="A favorite memory"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+          <div class="polaroid-fallback">
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5">
+
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="2"/>
+
+              <circle
+                cx="9"
+                cy="11"
+                r="2"/>
+
+              <path
+                d="M21 17l-5-5-4 4-3-3-6 6"/>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+        <div class="polaroid-caption">
+          Through the years
+        </div>
+
+      </div>
+
+
+      <!-- PHOTO 2 -->
+
+      <div class="polaroid">
+
+        <div class="tape"></div>
+
+        <div class="polaroid-photo">
+
+          <img
+            src="pictures/lola.jpg"
+            alt="A recent memory"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+          <div class="polaroid-fallback">
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5">
+
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="2"/>
+
+              <circle
+                cx="9"
+                cy="11"
+                r="2"/>
+
+              <path
+                d="M21 17l-5-5-4 4-3-3-6 6"/>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+        <div class="polaroid-caption">
+          Happy memories
+        </div>
+
+      </div>
+
+
+      <!-- PHOTO 3 -->
+
+      <div class="polaroid">
+
+        <div class="tape"></div>
+
+        <div class="polaroid-photo">
+
+          <img
+            src="pictures/photo-3.jpg"
+            alt="Family memory"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+          <div class="polaroid-fallback">
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5">
+
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="2"/>
+
+              <circle
+                cx="9"
+                cy="11"
+                r="2"/>
+
+              <path
+                d="M21 17l-5-5-4 4-3-3-6 6"/>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+        <div class="polaroid-caption">
+          My family
+        </div>
+
+      </div>
+
+
+      <!-- PHOTO 4 -->
+
+      <div class="polaroid">
+
+        <div class="tape"></div>
+
+        <div class="polaroid-photo">
+
+          <img
+            src="pictures/photo-4.jpg"
+            alt="Family and grandchildren"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+          <div class="polaroid-fallback">
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5">
+
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="2"/>
+
+              <circle
+                cx="9"
+                cy="11"
+                r="2"/>
+
+              <path
+                d="M21 17l-5-5-4 4-3-3-6 6"/>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+        <div class="polaroid-caption">
+          With my grandkids
+        </div>
+
+      </div>
+
+
+      <!-- PHOTO 5 -->
+
+      <div class="polaroid">
+
+        <div class="tape"></div>
+
+        <div class="polaroid-photo">
+
+          <img
+            src="pictures/photo-5.jpg"
+            alt="Birthday memories"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+          <div class="polaroid-fallback">
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5">
+
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="2"/>
+
+              <circle
+                cx="9"
+                cy="11"
+                r="2"/>
+
+              <path
+                d="M21 17l-5-5-4 4-3-3-6 6"/>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+        <div class="polaroid-caption">
+          Birthdays past
+        </div>
+
+      </div>
+
+
+      <!-- PHOTO 6 -->
+
+      <div class="polaroid">
+
+        <div class="tape"></div>
+
+        <div class="polaroid-photo">
+
+          <img
+            src="pictures/photo-6.jpg"
+            alt="Home and family"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+          <div class="polaroid-fallback">
+
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5">
+
+              <rect
+                x="3"
+                y="5"
+                width="18"
+                height="14"
+                rx="2"/>
+
+              <circle
+                cx="9"
+                cy="11"
+                r="2"/>
+
+              <path
+                d="M21 17l-5-5-4 4-3-3-6 6"/>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+        <div class="polaroid-caption">
+          With my husband
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FOOTER WAVE ================= -->
+
+<div class="wave wave-into-footer">
+
+  <svg
+    viewBox="0 0 1440 90"
+    preserveAspectRatio="none">
+
+    <path
+      d="M0 50 C 240 0, 480 90, 720 50 C 960 10, 1200 80, 1440 50 L1440 90 L0 90 Z"
+      fill="#3D2B1F"/>
+
+  </svg>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="sunset"></div>
+
+  <p class="display">
+    I hope you can celebrate this special milestone with me.
+  </p>
+
+  <p>
+    It would mean so much to have my family and friends by my side as I celebrate 60 wonderful years of life, love, laughter, and memories.
+  </p>
+
+  <p class="signature">
+    With love,<br>
+    Lourdes Cristina
+  </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   BUILD HERO SUN RAYS
+========================================================= */
+
+const rayGroup = document.getElementById('raygroup');
+
+const rayCount = 16;
+
+for(let i = 0; i < rayCount; i++){
+
+  const angle = (360 / rayCount) * i;
+
+  const ray = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'rect'
+  );
+
+  ray.setAttribute('x',197);
+  ray.setAttribute('y',0);
+  ray.setAttribute('width',6);
+  ray.setAttribute('height',60);
+  ray.setAttribute('rx',3);
+
+  ray.setAttribute(
+    'transform',
+    `rotate(${angle} 200 200)`
+  );
+
+  rayGroup.appendChild(ray);
+}
+
+
+/* =========================================================
+   HERO PARALLAX
+========================================================= */
+
+const heroSection =
+  document.querySelector('.hero');
+
+const raysWrap =
+  document.getElementById('raysWrap');
+
+const prefersReduced =
+  window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+
+if(
+  heroSection &&
+  raysWrap &&
+  !prefersReduced &&
+  window.matchMedia('(pointer: fine)').matches
+){
+
+  heroSection.addEventListener(
+    'mousemove',
+    function(e){
+
+      const rect =
+        heroSection.getBoundingClientRect();
+
+      const px =
+        (e.clientX - rect.left) /
+        rect.width - .5;
+
+      const py =
+        (e.clientY - rect.top) /
+        rect.height - .5;
+
+
+      raysWrap.style.transform =
+        `translate(${px * 24}px, ${py * 24}px)`;
+
+
+      document
+        .querySelectorAll('.hero .balloon')
+        .forEach((balloon,index)=>{
+
+          balloon.style.marginLeft =
+            (px * (10 + index * 4)) + 'px';
+
+        });
+
+    }
+  );
+
+
+  heroSection.addEventListener(
+    'mouseleave',
+    function(){
+
+      raysWrap.style.transform = '';
+
+      document
+        .querySelectorAll('.hero .balloon')
+        .forEach(balloon=>{
+          balloon.style.marginLeft = '';
+        });
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   SCROLL CUE
+========================================================= */
+
+const scrollCue =
+  document.getElementById('scrollCue');
+
+window.addEventListener(
+  'scroll',
+  function(){
+
+    if(window.scrollY > 60){
+      scrollCue.classList.add('faded');
+    }else{
+      scrollCue.classList.remove('faded');
+    }
+
+  },
+  {passive:true}
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealEls =
+  document.querySelectorAll('.reveal');
+
+
+const io =
+  new IntersectionObserver(
+    (entries)=>{
+
+      entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add('in');
+
+          io.unobserve(entry.target);
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.15
+    }
+  );
+
+
+revealEls.forEach(
+  element=>io.observe(element)
+);
+
+
+/* =========================================================
+   ENVELOPE OPEN + CONFETTI
+========================================================= */
+
+const envelopeScreen =
+  document.getElementById('envelopeScreen');
+
+const envelope =
+  document.getElementById('envelope');
+
+const envelopeBtn =
+  document.getElementById('envelopeBtn');
+
+
+const colors = [
+  '#FFC93C',
+  '#F4845F',
+  '#7C8F4A',
+  '#3D2B1F',
+  '#FFE0B5'
+];
+
+
+let opened = false;
+
+
+envelopeBtn.addEventListener(
+  'click',
+  function(){
+
+    if(opened) return;
+
+    opened = true;
+
+    envelope.classList.add('open');
+
+    burstConfetti();
+
+
+    setTimeout(
+      ()=>{
+        envelopeScreen.classList.add('hidden');
+        document.body.classList.remove('locked');
+      },
+      1000
+    );
+
+  }
+);
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+function burstConfetti(){
+
+  for(let i = 0; i < 70; i++){
+
+    const piece =
+      document.createElement('div');
+
+    piece.className =
+      'confetti-piece';
+
+
+    const size =
+      6 + Math.random() * 7;
+
+
+    piece.style.left =
+      Math.random() * 100 + 'vw';
+
+
+    piece.style.width =
+      size + 'px';
+
+
+    piece.style.height =
+      (
+        size *
+        (
+          Math.random() > .5
+          ? 1.5
+          : 1
+        )
+      ) + 'px';
+
+
+    piece.style.background =
+      colors[
+        Math.floor(
+          Math.random() * colors.length
+        )
+      ];
+
+
+    piece.style.borderRadius =
+      Math.random() > .5
+      ? '50%'
+      : '2px';
+
+
+    piece.style.animationDuration =
+      (2.5 + Math.random() * 2) + 's';
+
+
+    piece.style.animationDelay =
+      (Math.random() * .3) + 's';
+
+
+    piece.style.opacity = .85;
+
+
+    document.body.appendChild(piece);
+
+
+    setTimeout(
+      ()=>piece.remove(),
+      5500
+    );
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
