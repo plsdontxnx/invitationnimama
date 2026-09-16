@@ -16,9 +16,9 @@
 :root{
   --cream:#FFFBF0;
   --cream-2:#FFF6E0;
-  --sun:#FFC93C;
-  --sun-soft:#FFDD82;
-  --mustard:#C9891A;
+  --sun:#FFDD8A;
+  --sun-soft:#FFF3D6;
+  --mustard:#C9932E;
   --coffee:#3D2B1F;
   --coffee-soft:#6B5240;
   --peach:#FFE0B5;
@@ -133,7 +133,7 @@ img{
       circle at 50% 40%,
       var(--sun-soft) 0%,
       var(--sun) 55%,
-      #F0AC17 100%
+      #F3C868 100%
     );
   transition:opacity .7s ease,visibility .7s ease;
 }
@@ -515,7 +515,7 @@ img{
       circle at 50% 38%,
       var(--sun-soft) 0%,
       var(--sun) 46%,
-      #F6B31E 100%
+      #F3C868 100%
     );
   overflow:hidden;
 }
@@ -1225,6 +1225,146 @@ img{
   padding-bottom:1px;
 }
 
+/* ---------- COUNTDOWN ---------- */
+
+.countdown-wrap{
+  margin-top:44px;
+  text-align:center;
+}
+
+.countdown-label{
+  font-family:'Fraunces',serif;
+  font-style:italic;
+  font-size:1.02rem;
+  color:var(--coffee-soft);
+  margin-bottom:18px;
+}
+
+.countdown-grid{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.countdown-box{
+  background:var(--white);
+  border-radius:16px;
+  padding:16px 8px 14px;
+  width:78px;
+  box-shadow:0 8px 0 var(--shadow);
+  transition:transform .3s ease,box-shadow .3s ease;
+  animation:countBreathe 4.5s ease-in-out infinite;
+}
+
+.countdown-box:nth-child(2){
+  animation-delay:.15s;
+}
+
+.countdown-box:nth-child(3){
+  animation-delay:.3s;
+}
+
+.countdown-box:nth-child(4){
+  animation-delay:.45s;
+}
+
+.countdown-box:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 0 var(--shadow);
+}
+
+@keyframes countBreathe{
+  0%,100%{
+    box-shadow:0 8px 0 var(--shadow);
+  }
+
+  50%{
+    box-shadow:0 10px 16px rgba(61,43,31,.14);
+  }
+}
+
+.countdown-num{
+  font-family:'Fraunces',serif;
+  font-weight:700;
+  font-size:2rem;
+  color:var(--mustard);
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+
+.countdown-unit{
+  font-size:.68rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--coffee-soft);
+  margin-top:6px;
+  font-weight:700;
+}
+
+@media(max-width:420px){
+  .countdown-box{
+    width:66px;
+    padding:12px 4px 10px;
+  }
+
+  .countdown-num{
+    font-size:1.6rem;
+  }
+}
+
+/* ---------- CTA BUTTONS ---------- */
+
+.cta-row{
+  margin-top:38px;
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  padding:13px 24px;
+  border-radius:999px;
+  font-family:'Quicksand',sans-serif;
+  font-weight:700;
+  font-size:.95rem;
+  text-decoration:none;
+  cursor:pointer;
+  border:none;
+  box-shadow:0 6px 0 var(--shadow);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+
+.cta-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 9px 0 var(--shadow);
+}
+
+.cta-btn:active{
+  transform:translateY(0);
+  box-shadow:0 3px 0 var(--shadow);
+}
+
+.cta-btn.primary{
+  background:var(--coffee);
+  color:var(--cream);
+}
+
+.cta-btn.secondary{
+  background:var(--white);
+  color:var(--mustard);
+}
+
+.cta-btn svg{
+  width:18px;
+  height:18px;
+  flex-shrink:0;
+}
+
 /* ---------- GALLERY ---------- */
 
 .gallery{
@@ -1670,7 +1810,7 @@ footer .signature{
         cx="39"
         cy="17"
         r="6"
-        fill="#C9891A"/>
+        fill="#C9932E"/>
 
     </svg>
 
@@ -1896,8 +2036,41 @@ footer .signature{
       <span class="divider"></span>
 
       <span>
-        3:00 PM
+        5:00 PM
       </span>
+
+    </div>
+
+
+    <div class="countdown-wrap reveal in">
+
+      <p class="countdown-label">
+        counting down to the celebration
+      </p>
+
+      <div class="countdown-grid">
+
+        <div class="countdown-box">
+          <div class="countdown-num" id="cdDays">00</div>
+          <div class="countdown-unit">days</div>
+        </div>
+
+        <div class="countdown-box">
+          <div class="countdown-num" id="cdHours">00</div>
+          <div class="countdown-unit">hrs</div>
+        </div>
+
+        <div class="countdown-box">
+          <div class="countdown-num" id="cdMins">00</div>
+          <div class="countdown-unit">min</div>
+        </div>
+
+        <div class="countdown-box">
+          <div class="countdown-num" id="cdSecs">00</div>
+          <div class="countdown-unit">sec</div>
+        </div>
+
+      </div>
 
     </div>
 
@@ -1907,7 +2080,6 @@ footer .signature{
   <div class="scroll-cue" id="scrollCue">
 
     <span></span>
-    scroll down
 
   </div>
 
@@ -2066,7 +2238,7 @@ footer .signature{
           </div>
 
           <div class="ticket-value">
-            3:00 PM onwards
+            5:00 PM onwards
           </div>
 
           <div class="ticket-note">
@@ -2125,6 +2297,39 @@ footer .signature{
         </div>
 
       </div>
+
+    </div>
+
+
+    <div class="cta-row reveal">
+
+      <button class="cta-btn primary" id="addToCalendarBtn" type="button">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="4" width="18" height="17" rx="2"/>
+          <path d="M3 9h18M8 2v4M16 2v4"/>
+          <path d="M9 14l2 2 4-4"/>
+        </svg>
+
+        Add to calendar
+
+      </button>
+
+      <a
+        class="cta-btn secondary"
+        id="getDirectionsBtn"
+        href="https://www.google.com/maps/search/?api=1&amp;query=Harmony+Staycation%2C+Harmony+2+Village%2C+Brgy.+Mancruz%2C+Daet%2C+Camarines+Norte"
+        target="_blank"
+        rel="noopener">
+
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/>
+          <circle cx="12" cy="9" r="2.5"/>
+        </svg>
+
+        Get directions
+
+      </a>
 
     </div>
 
@@ -2668,6 +2873,89 @@ revealEls.forEach(
 
 
 /* =========================================================
+   COUNTDOWN TIMER
+========================================================= */
+
+const partyDate = new Date('2026-09-19T17:00:00+08:00');
+
+const cdDays = document.getElementById('cdDays');
+const cdHours = document.getElementById('cdHours');
+const cdMins = document.getElementById('cdMins');
+const cdSecs = document.getElementById('cdSecs');
+
+function pad(n){
+  return String(n).padStart(2,'0');
+}
+
+function updateCountdown(){
+
+  const now = new Date();
+  let diff = partyDate - now;
+
+  if(diff < 0) diff = 0;
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  const secs = Math.floor((diff % 60000) / 1000);
+
+  if(cdDays) cdDays.textContent = pad(days);
+  if(cdHours) cdHours.textContent = pad(hours);
+  if(cdMins) cdMins.textContent = pad(mins);
+  if(cdSecs) cdSecs.textContent = pad(secs);
+
+}
+
+if(cdDays){
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+
+/* =========================================================
+   ADD TO CALENDAR (.ics DOWNLOAD)
+========================================================= */
+
+const addToCalendarBtn = document.getElementById('addToCalendarBtn');
+
+if(addToCalendarBtn){
+
+  addToCalendarBtn.addEventListener('click', function(){
+
+    const icsContent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Lourdes Cristina 60th Birthday//EN',
+      'BEGIN:VEVENT',
+      'UID:' + Date.now() + '@lourdes-cristina-60th',
+      'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z',
+      'DTSTART:20260919T070000Z',
+      'DTEND:20260919T110000Z',
+      "SUMMARY:Lourdes Cristina's 60th Birthday",
+      'DESCRIPTION:Please join me as I celebrate my 60th birthday with love\\, laughter\\, good food and wonderful memories.',
+      'LOCATION:Harmony Staycation\\, Harmony 2 Village\\, Brgy. Mancruz\\, Daet\\, Camarines Norte',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([icsContent], {type:'text/calendar;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'lourdes-cristina-60th-birthday.ics';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    URL.revokeObjectURL(url);
+
+  });
+
+}
+
+
+/* =========================================================
    ENVELOPE OPEN + CONFETTI
 ========================================================= */
 
@@ -2682,7 +2970,7 @@ const envelopeBtn =
 
 
 const colors = [
-  '#FFC93C',
+  '#FFDD8A',
   '#F4845F',
   '#7C8F4A',
   '#3D2B1F',
